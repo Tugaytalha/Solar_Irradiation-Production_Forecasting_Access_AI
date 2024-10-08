@@ -33,11 +33,3 @@ def get_elevation(lat, lon):
         return f"An error occurred: {e}"
 
 
-# Example usage:
-latitude = 29.434500  # Example latitude
-longitude = 40.798800  # Example longitude (New York City)
-elevation = get_elevation(latitude, longitude)
-if elevation is not None:
-    print(f'Elevation at latitude {latitude}, longitude {longitude} is {elevation} meters.')
-else:
-    print("Failed to retrieve elevation data.")
