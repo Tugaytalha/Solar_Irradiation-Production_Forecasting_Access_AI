@@ -1,4 +1,4 @@
 .idea
 best_solar_model.pkl
 xgboost_solar_model.pkl
-*.pkl
+
