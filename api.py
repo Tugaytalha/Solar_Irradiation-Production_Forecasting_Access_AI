@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
 import datetime
+from flask_cors import CORS
 from elevation_api import get_elevation  # Assuming elevation_api.py is in the same directory
 from calculate_azimuth import max_azimuth  # Replace with the actual module where max_azimuth is defined
 
@@ -10,6 +11,9 @@ model = joblib.load('best_solar_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
 app = Flask(__name__)
+# Allow all origins to access the API from Cors
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 
 @app.route('/predict_energy', methods=['POST'])
@@ -58,7 +62,7 @@ def predict_energy():
         #     'Month': [float(month)]
         # }
 
-        input_frames = []
+        predicted_irradiations = []
         # Prepare the yearly input for the model
         for i in range(0, 12):
             # Calculate azimuth (month_number * 30 + 15 for the day of year)
@@ -79,18 +83,15 @@ def predict_energy():
             # Normalize the custom input
             custom_input[['Azimuth (deg)', 'Longitude', 'Elevation', 'Latitude', 'Year', 'Month']] = scaler.transform(custom_input)
 
-            input_frames.append(custom_input)
+            # Predict the irradiation for the month
+            predict_irradiation = model.predict(custom_input)
 
+            # Ensure the predicted irradiation is non-negative
+            predict_irradiation = predict_irradiation if predict_irradiation[0] > 0 else [0]
 
+            # Append the predicted irradiation to the list
+            predicted_irradiations.append(predict_irradiation)
 
-        # # Create a DataFrame for the model input and ensure all values are floats
-        # custom_input = pd.DataFrame(input_data)
-        #
-        # # Normalize the custom input
-        # custom_input[['Azimuth (deg)', 'Longitude', 'Elevation', 'Latitude', 'Year', 'Month']] = scaler.transform(custom_input)
-
-        # Predict solar irradiation using the loaded model
-        predicted_irradiations = model.predict(input_frames)
 
         # Predicted irradiation for the next month
         predicted_irradiation = predicted_irradiations[month % 12][0]
@@ -99,12 +100,12 @@ def predict_energy():
         # Calculate energy output
         if panel_wattage:
             # If wattage is provided, use it directly
-            coeff = panel_wattage
-            energy_output = coeff * predicted_irradiation / 1000  # Convert Wh to kWh
+            coeff = panel_wattage / 1000  # Convert Wh to kWh
+            energy_output = coeff * predicted_irradiation / 1000  # Convert Wh/m² to peak sun hours
         else:
             # Calculate energy using area and efficiency
             coeff = panel_area * panel_efficiency
-            energy_output = coeff * predicted_irradiation / 1000  # Convert Wh/m² to kWh
+            energy_output = coeff * predicted_irradiation / 1000  # Convert Wh/m² to peak sun hours
 
         # Calculate the monthly and yearly profit
         monthly_profit = energy_output * kwh_price
@@ -117,7 +118,12 @@ def predict_energy():
             monthly_profit = energy_output * kwh_price
             yearly_profit += monthly_profit
 
+        # Round profits to closest integer
+        monthly_profit = round(monthly_profit)
+        yearly_profit = round(yearly_profit)
 
+        # Round energy output to 3 decimal places
+        energy_output = round(energy_output, 3)
 
 
         # Return the result as JSON
