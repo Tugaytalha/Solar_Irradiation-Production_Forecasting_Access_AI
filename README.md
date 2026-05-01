@@ -7,106 +7,106 @@
 ![Flask](https://img.shields.io/badge/Flask-3.0-lightgrey.svg)
 ![Docker](https://img.shields.io/badge/Docker-ready-blue.svg)
 
-Güneş enerjisi üretim tahmini ve finansal analiz için kapsamlı bir AI destekli çözüm. Bu proje, coğrafi konuma göre güneş ışınımını (irradiasyon) tahmin eder, panel verimliliğine göre enerji üretimini hesaplar ve yatırım geri dönüş süresini (ROI) analiz eder.
+A comprehensive AI-powered solution for solar energy production forecasting and financial analysis. This project predicts solar irradiation based on geographic location, calculates energy production based on panel efficiency, and analyzes investment payback period (ROI).
 
-## 🎯 Proje Hakkında
+## 🎯 Project Overview
 
-Bu sistem, güneş enerjisi yatırımlarını değerlendirmek isteyenler için geliştirilmiş kapsamlı bir karar destek aracıdır. 1991-2005 yılları arası TMY3 (Typical Meteorological Year 3) verilerini kullanarak:
+This system is a comprehensive decision support tool developed for those evaluating solar energy investments. Using TMY3 (Typical Meteorological Year 3) data from 1991-2005, it:
 
-- **30 yıllık güneş ışınımı tahmini** yapar
-- **Enerji üretimini** (kWh) hesaplar
-- **Finansal analiz** (aylık/yıllık kâr, amortisman süresi) sunar
-- **Grafiksel raporlama** ile yatırım projeksiyonu çizer
+- Makes **30-year solar irradiation forecasts**
+- Calculates **energy production** (kWh)
+- Provides **financial analysis** (monthly/yearly profit, payback period)
+- Generates **graphical reports** with investment projections
 
-### Temel Amaçlar
-- Güneş enerjisi yatırımlarının fizibilitesini belirlemek
-- Konuma özel optimizasyon yapmak
-- Panel seçimine göre farklı senaryoları karşılaştırmak
-- Yenilenebilir enerji projelerinde risk analizi yapmak
+### Core Objectives
+- Determine feasibility of solar energy investments
+- Perform location-specific optimization
+- Compare different scenarios based on panel selection
+- Conduct risk analysis in renewable energy projects
 
-## ✨ Öne Çıkan Özellikler
+## ✨ Key Features
 
-### 🤖 Gelişmiş AI Modeli
-- **H2O AutoML** ile otomatik model seçimi
-- **XGBoost** tabanlı en iyi model pipeline'ı
-- **30 yıllık tahmin** kapasitesi (12 ay × 30 yıl)
-- **Gerçek zamanlı öğrenme** (H2O cluster entegrasyonu)
+### 🤖 Advanced AI Model
+- **H2O AutoML** for automatic model selection
+- **XGBoost**-based best model pipeline
+- **30-year forecasting** capacity (12 months × 30 years)
+- **Real-time learning** (H2O cluster integration)
 
-### 🌍 Coğrafi Hesaplamalar
-- **Güneş açıları**: Azimuth (ufuk açısı) ve Elevation (yükseklik) hesaplamaları
-- **Gerçek zamanlı konum verisi**: Open-Meteo API ile rakım (elevation) tespiti
-- **Günün hangi anı**: Solar declination ve hour angle hesaplamaları
-- **Koordinat bazlı**: Enlem (latitude) ve boylam (longitude) desteği
+### 🌍 Geographic Calculations
+- **Solar angles**: Azimuth (horizon angle) and Elevation calculations
+- **Real-time location data**: Elevation detection via Open-Meteo API
+- **Solar position**: Solar declination and hour angle calculations
+- **Coordinate support**: Latitude and longitude support
 
-### 💰 Finansal Analiz
-- **Enerji fiyatı entegrasyonu** (kWh başına maliyet)
-- **Panel wattage veya alan/verimlilik** bazlı hesaplama
-- **İnverter maliyeti** hesaplama (kapasiteye göre kademeli)
-- **Amortisman süresi** (break-even point) belirleme
-- **30 yıllık kümülatif kâr** projeksiyonu
+### 💰 Financial Analysis
+- **Energy price integration** (cost per kWh)
+- **Panel wattage or area/efficiency** based calculations
+- **Inverter cost** calculation (tiered by capacity)
+- **Payback period** (break-even point) determination
+- **30-year cumulative profit** projection
 
-### 🚀 Hazır Deployment
-- **Flask REST API** (/predict_energy endpoint'i)
-- **Docker containerization** (docker-compose ile tek komutla ayağa kalkar)
-- **CORS desteği** (cross-origin isteklerine açık)
-- **Base64 grafik** çıktısı (web uygulamalarına gömülmeye hazır)
+### 🚀 Ready-to-Deploy
+- **Flask REST API** (/predict_energy endpoint)
+- **Docker containerization** (single command deployment with docker-compose)
+- **CORS support** (open to cross-origin requests)
+- **Base64 chart** output (ready to embed in web applications)
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Technologies Used
 
-| Teknoloji | Sürüm | Kullanım Amacı |
-|-----------|-------|----------------|
-| Python | 3.8+ | Ana programlama dili |
-| H2O AutoML | 3.x | Otomatik makine öğrenmesi |
-| Flask | 3.0.3 | REST API sunucusu |
-| XGBoost | 2.1.1 | Gradient boosting modeli |
-| scikit-learn | 1.4.1 | Veri ölçeklendirme (StandardScaler) |
-| pandas | Latest | Veri manipülasyonu |
-| NumPy | Latest | Sayısal hesaplamalar |
-| Matplotlib | Latest | Grafik çizimi |
-| joblib | Latest | Model serileştirme |
-| Docker | Latest | Konteynerizasyon |
-| Open-Meteo API | - | Rakım (elevation) verisi |
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| Python | 3.8+ | Main programming language |
+| H2O AutoML | 3.x | Automated machine learning |
+| Flask | 3.0.3 | REST API server |
+| XGBoost | 2.1.1 | Gradient boosting model |
+| scikit-learn | 1.4.1 | Data scaling (StandardScaler) |
+| pandas | Latest | Data manipulation |
+| NumPy | Latest | Numerical calculations |
+| Matplotlib | Latest | Chart plotting |
+| joblib | Latest | Model serialization |
+| Docker | Latest | Containerization |
+| Open-Meteo API | - | Elevation data |
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 Solar_Irradiation-Production_Forecasting_Access_AI/
 ├── 📂 data/
 │   ├── 1991-2005/
-│   │   ├── monthly/solar_dataset.csv     # Aylık güneş verisi
-│   │   └── tmy3/                         # TMY3 ham verileri
+│   │   ├── monthly/solar_dataset.csv     # Monthly solar data
+│   │   └── tmy3/                         # TMY3 raw data
 │   │       ├── TMY3_StationsMeta(1).csv
 │   │       ├── TMY3_StationsMetaMeta.doc
 │   │       ├── tmy3_description.docx
 │   │       └── tmy3_user_manual.pdf
-│   └── link.txt                          # Veri kaynağı linki
-├── 📂 __pycache__/                       # Python cache dosyaları
-├── 🐍 app.py                              # Flask API uygulaması
-├── 🐍 best_solar_model.pkl                # Eğitilmiş H2O modeli
-├── 🐍 scaler.pkl                          # StandardScaler nesnesi
-├── 🐍 preprocess_train.py                 # Model eğitim scripti
-├── 🐍 calculate_azimuth.py                # Güneş açı hesaplamaları
-├── 🐍 elevation_api.py                    # Open-Meteo API entegrasyonu
-├── 📓 preprocess_train.ipynb              # Jupyter notebook (eğitim)
-├── 📓 convert_to_montly.ipynb             # Aylık veri dönüşümü
-├── 📓 merge_wlocations.ipynb              # Lokasyon birleştirme
-├── 📄 best_model_pipeline.py               # En iyi model pipeline'ı
-├── 📄 dockerfile                          # Docker imaj tanımı
-├── 📄 docker-compose.yaml                 # Docker compose yapılandırması
-├── 📄 requirements.txt                    # Python gereksinimleri
-├── 📄 r.txt                               # Ek bağımlılıklar
-├── 📄 solar.csv                           # İşlenmiş güneş verisi
-├── 📄 output.png                          # Örnek çıktı grafiği
-├── 📄 unlog.txt                           # Hata kayıtları
-├── 📄 LICENSE                             # Apache 2.0 Lisansı
-├── 📄 README.md                           # Bu dosya
-├── 📄 .gitignore                          # Git yoksayma kuralları
-└── 📄 .gitattributes                      # Git özellikleri
+│   └── link.txt                          # Data source link
+├── 📂 __pycache__/                       # Python cache files
+├── 🐍 app.py                              # Flask API application
+├── 🐍 best_solar_model.pkl                # Trained H2O model
+├── 🐍 scaler.pkl                          # StandardScaler object
+├── 🐍 preprocess_train.py                 # Model training script
+├── 🐍 calculate_azimuth.py                # Solar angle calculations
+├── 🐍 elevation_api.py                    # Open-Meteo API integration
+├── 📓 preprocess_train.ipynb              # Jupyter notebook (training)
+├── 📓 convert_to_montly.ipynb             # Monthly data conversion
+├── 📓 merge_wlocations.ipynb              # Location merging
+├── 📄 best_model_pipeline.py               # Best model pipeline
+├── 📄 dockerfile                          # Docker image definition
+├── 📄 docker-compose.yaml                 # Docker compose configuration
+├── 📄 requirements.txt                    # Python requirements
+├── 📄 r.txt                               # Additional dependencies
+├── 📄 solar.csv                           # Processed solar data
+├── 📄 output.png                          # Sample output graph
+├── 📄 unlog.txt                           # Error logs
+├── 📄 LICENSE                             # Apache 2.0 License
+├── 📄 README.md                           # This file
+├── 📄 .gitignore                          # Git ignore rules
+└── 📄 .gitattributes                      # Git attributes
 ```
 
-## ☀️ Güneş Açıları Hesaplama
+## ☀️ Solar Angle Calculations
 
-### `calculate_azimuth.py` İçeriği
+### `calculate_azimuth.py` Content
 
 **Solar Declination (δ)**:
 ```
@@ -117,127 +117,127 @@ Solar_Irradiation-Production_Forecasting_Access_AI/
 ```
 sin(α) = sin(φ) × sin(δ) + cos(φ) × cos(δ) × cos(H)
 ```
-- φ: Enlem (latitude)
-- H: Saat açısı (hour angle)
+- φ: Latitude
+- H: Hour angle
 
 **Solar Azimuth Angle (A)**:
 ```
 cos(A) = (sin(δ) - sin(α) × sin(φ)) / (cos(α) × cos(φ))
 ```
 
-Bu hesaplamalar, günün her anı için güneşin konumunu belirleyerek irradiasyon tahminini iyileştirir.
+These calculations determine the sun's position at any moment of the day to improve irradiation forecasting.
 
-## 🔬 Veri Seti Detayları
+## 🔬 Dataset Details
 
-### TMY3 Verisi (1991-2005)
-- **Kaynak**: Typical Meteorological Year 3 veritabanı
-- **Zaman çözünürlüğü**: Aylık aggregated değerler
-- **İstasyon sayısı**: Çok sayıda meteoroloji istasyonu
-- **Değişkenler**:
-  - Azimuth (deg): Güneş ufuk açısı
-  - Longitude: Boylam
-  - Elevation: Rakım
-  - Latitude: Enlem
-  - Year: Yıl
-  - Month: Ay
-  - **Merged Glo (Wh/m²)**: Birleştirilmiş güneş ışınımı (hedef değişken)
+### TMY3 Data (1991-2005)
+- **Source**: Typical Meteorological Year 3 database
+- **Time resolution**: Monthly aggregated values
+- **Station count**: Multiple meteorological stations
+- **Variables**:
+  - Azimuth (deg): Sun horizon angle
+  - Longitude: Longitude
+  - Elevation: Altitude
+  - Latitude: Latitude
+  - Year: Year
+  - Month: Month
+  - **Merged Glo (Wh/m²)**: Merged solar irradiation (target variable)
 
-### Özellik Mühendisliği
-- **StandardScaler** ile koordinat verilerinin normalize edilmesi
-- **Aylık gruplama** ile mevsimsellik yakalama
-- **Yıl bazlı trend** analizi
+### Feature Engineering
+- **StandardScaler** for normalizing coordinate data
+- **Monthly grouping** to capture seasonality
+- **Year-based trend** analysis
 
-## 🧠 Model Mimarisi
+## 🧠 Model Architecture
 
 ### H2O AutoML Pipeline
-1. **Veri yükleme**: pandas DataFrame → H2OFrame dönüşümü
-2. **Train-Test split**: %80 eğitim, %20 test
-3. **AutoML çalıştırma**:
-   - `max_runtime_secs=600` (10 dakika)
-   - `nfolds=5` (5-katlı çapraz doğrulama)
-   - Seed: 42 (yeniden üretilebilirlik)
-4. **En iyi model seçimi**: Leaderboard'dan en iyi XGBoost pipeline'ı
-5. **Tam veri ile yeniden eğitim**: Tüm veriyi kullanarak final model
-6. **Kaydetme**: `joblib.dump()` ile `best_solar_model.pkl`
+1. **Load data**: pandas DataFrame → H2OFrame conversion
+2. **Train-Test split**: 80% training, 20% testing
+3. **Run AutoML**:
+   - `max_runtime_secs=600` (10 minutes)
+   - `nfolds=5` (5-fold cross-validation)
+   - Seed: 42 (reproducibility)
+4. **Select best model**: XGBoost pipeline from leaderboard
+5. **Retrain with full data**: Final model using all data
+6. **Save**: `joblib.dump()` to `best_solar_model.pkl`
 
-### Model Performansı
+### Model Performance
 - **Target**: Merged Glo (Wh/m²)
-- **Algorithms**: XGBoost, Random Forest, GLM, Deep Learning (H2O AutoML seçimi)
-- **Evaluation**: MSE, RMSE, MAE metrikleri
+- **Algorithms**: XGBoost, Random Forest, GLM, Deep Learning (H2O AutoML selection)
+- **Evaluation**: MSE, RMSE, MAE metrics
 
-## 🚀 Kurulum
+## 🚀 Installation
 
-### Gereksinimler
-- Python 3.8 veya üzeri
-- pip (Python paket yöneticisi)
-- Docker (opsiyonel, container çalıştırmak için)
-- H2O cluster (model eğitimi için, `10.1.234.150:54321`)
+### Requirements
+- Python 3.8 or higher
+- pip (Python package manager)
+- Docker (optional, for container deployment)
+- H2O cluster (for model training, `10.1.234.150:54321`)
 
-### Adımlar
+### Steps
 
-1. **Projeyi klonlayın:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI.git
    cd Solar_Irradiation-Production_Forecasting_Access_AI
    ```
 
-2. **Sanal ortam oluşturun (önerilir):**
+2. **Create a virtual environment (recommended):**
    ```bash
    python -m venv venv
    source venv/bin/activate  # Linux/Mac
-   # veya
+   # or
    venv\Scripts\activate     # Windows
    ```
 
-3. **Gereksinimleri yükleyin:**
+3. **Install requirements:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **H2O Cluster (model eğitimi için):**
-   - Eğer kendi H2O clusterınız yoksa:
+4. **H2O Cluster (for model training):**
+   - If you don't have your own H2O cluster:
    ```python
    import h2o
-   h2o.init()  # Yerel başlatma
+   h2o.init()  # Local startup
    ```
-   - Veya `10.1.234.150:54321` adresindeki clusterı kullanın
+   - Or use the cluster at `10.1.234.150:54321`
 
-## 💡 Kullanım
+## 💡 Usage
 
-### A. Modeli Yeniden Eğitmek (Geliştiriciler İçin)
+### A. Retraining the Model (For Developers)
 
 ```bash
 python preprocess_train.py
-# veya
+# or
 jupyter notebook preprocess_train.ipynb
 ```
 
-Bu işlem:
-- TMY3 verisini yükler
-- H2O AutoML ile en iyi modeli seçer
-- `best_solar_model.pkl` ve `scaler.pkl` dosyalarını oluşturur
+This process:
+- Loads TMY3 data
+- Selects the best model with H2O AutoML
+- Creates `best_solar_model.pkl` and `scaler.pkl` files
 
-### B. Flask API'yi Çalıştırmak
+### B. Running the Flask API
 
-#### 1. Yerel Çalıştırma
+#### 1. Local Execution
 ```bash
 python app.py
-# API http://0.0.0.0:5000 adresinde ayağa kalkar
+# API starts at http://0.0.0.0:5000
 ```
 
-#### 2. Docker ile Çalıştırma (Önerilen)
+#### 2. Docker Execution (Recommended)
 ```bash
 docker-compose up --build
-# Flask uygulaması container içinde çalışır
+# Flask app runs inside container
 ```
 
-### C. API Kullanımı
+### C. API Usage
 
 #### Endpoint: `/predict_energy`
 **Method**: POST  
 **Content-Type**: application/json
 
-**İstek (Request) Örneği:**
+**Request Example:**
 ```json
 {
   "latitude": 40.7128,
@@ -246,7 +246,7 @@ docker-compose up --build
   "panel_wattage": 400
 }
 ```
-VEYA
+OR
 ```json
 {
   "latitude": 40.7128,
@@ -257,19 +257,19 @@ VEYA
 }
 ```
 
-**Alanlar:**
-| Alan | Tip | Açıklama | Gerekli |
-|------|-----|----------|---------|
-| latitude | float | Enlem (-90 ile 90 arası) | Evet |
-| longitude | float | Boylam (-180 ile 180 arası) | Evet |
-| kwh_price | float | kWh başına elektrik fiyatı ($) | Evet |
-| panel_wattage | float | Panel gücü (Watt) | * |
-| panel_area | float | Panel alanı (m²) | ** |
-| panel_efficiency | float | Panel verimliliği (0.0-1.0) | ** |
+**Fields:**
+| Field | Type | Description | Required |
+|-------|------|-------------|----------|
+| latitude | float | Latitude (-90 to 90) | Yes |
+| longitude | float | Longitude (-180 to 180) | Yes |
+| kwh_price | float | Electricity price per kWh ($) | Yes |
+| panel_wattage | float | Panel power (Watts) | * |
+| panel_area | float | Panel area (m²) | ** |
+| panel_efficiency | float | Panel efficiency (0.0-1.0) | ** |
 
-*İsterseniz `panel_wattage` VEYA `panel_area + panel_efficiency` çiftini gönderin.
+*Either send `panel_wattage` OR `panel_area + panel_efficiency` pair.
 
-**Yanıt (Response) Örneği:**
+**Response Example:**
 ```json
 {
   "monthly_energy_output_kWh": 125.456,
@@ -282,99 +282,99 @@ VEYA
 }
 ```
 
-**Yanıt Alanları:**
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| monthly_energy_output_kWh | float | Aylık enerji üretimi (kWh) |
-| yearly_energy_output_kWh | float | Yıllık enerji üretimi (kWh) |
-| monthly_profit | int | Aylık kâr ($) |
-| yearly_profit | int | Yıllık kâr ($) |
-| break_even_month | int | Amortisman süresi (ay) |
-| break_even_year | float | Amortisman süresi (yıl) |
-| chart | string | Base64 kodlanmış PNG grafiği |
+**Response Fields:**
+| Field | Type | Description |
+|-------|------|-------------|
+| monthly_energy_output_kWh | float | Monthly energy production (kWh) |
+| yearly_energy_output_kWh | float | Yearly energy production (kWh) |
+| monthly_profit | int | Monthly profit ($) |
+| yearly_profit | int | Yearly profit ($) |
+| break_even_month | int | Payback period (months) |
+| break_even_year | float | Payback period (years) |
+| chart | string | Base64 encoded PNG chart |
 
-## 📊 Finansal Hesaplama Mantığı
+## 📊 Financial Calculation Logic
 
-### Panel Maliyeti
+### Panel Cost
 ```python
-if coeff <= 0.1:       # Küçük sistem
+if coeff <= 0.1:       # Small system
     inverter_price = 100
-elif coeff <= 0.3:     # Orta sistem
+elif coeff <= 0.3:     # Medium system
     inverter_price = 1300
-elif coeff <= 1:        # Büyük sistem
+elif coeff <= 1:        # Large system
     inverter_price = 1800
-else:                    # Endüstriyel
+else:                    # Industrial
     inverter_price = 6000
 
 panel_price = coeff * 13000 + (1500 if coeff > 0.1 else 0) + inverter_price
 ```
 
-### Enerji Üretimi
+### Energy Production
 ```
 energy_output = (panel_wattage / 1000) × (irradiation / 1000)
-# VEYA
+# OR
 energy_output = (panel_area × panel_efficiency) × (irradiation / 1000)
 ```
 
-### Kâr Hesaplama
+### Profit Calculation
 ```
 monthly_profit = energy_output × kwh_price
 yearly_profit = monthly_profit × 12
 ```
 
-### Amortisman (Break-Even)
-Aylık kârlar toplanarak panel fiyatını geçtiği ay belirlenir.
+### Payback Period (Break-Even)
+Monthly profits are accumulated until they exceed the panel price.
 
-## 📈 Örnek Çıktı Grafiği
+## 📈 Sample Output Chart
 
-API yanıtındaki `chart` alanı, şu grafiği içerir:
-- **X ekseni**: Yıllar (mevcut yıl + 30 yıl)
-- **Y ekseni**: Kümülatif kâr ($)
-- **Mavi çizgi**: Kümülatif kâr
-- **Turuncu çizgi**: Panel maliyeti (sabit)
+The `chart` field in the API response contains this graph:
+- **X-axis**: Years (current year + 30 years)
+- **Y-axis**: Cumulative profit ($)
+- **Blue line**: Cumulative profit
+- **Orange line**: Panel cost (fixed)
 
-Grafik sayesinde yatırımın ne zaman kendini amorti edeceği görselleştirilir.
+The graph visualizes when the investment pays for itself.
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
-1. Bu repoyu fork edin
-2. Yeni bir özellik dalı oluşturun (`git checkout -b feature/AmazingFeature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
-4. Dalınıza push yapın (`git push origin feature/AmazingFeature`)
-5. Bir Pull Request açın
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Katkı Alanları
-- Daha fazla ML modeli entegrasyonu (Prophet, LSTM, Transformer)
-- Hava durumu API'leri ile gerçek zamanlı veri entegrasyonu
-- Mobil uygulama geliştirme (React Native / Flutter)
-- Daha gelişmiş finansal analiz (enflasyon, vergi teşvikleri)
-- Panel kirliliği ve degradasyon hesabı
-- Çoklu panel dizilimi optimizasyonu
+### Contribution Areas
+- Integration of more ML models (Prophet, LSTM, Transformer)
+- Real-time data integration with weather APIs
+- Mobile app development (React Native / Flutter)
+- Advanced financial analysis (inflation, tax incentives)
+- Panel soiling and degradation calculation
+- Multi-panel array optimization
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje **Apache License 2.0** altında lisanslanmıştır. Lisans metnini [LICENSE](LICENSE) dosyasında bulabilirsiniz.
+This project is licensed under the **Apache License 2.0**. You can find the license text in the [LICENSE](LICENSE) file.
 
-## 📧 İletişim
+## 📧 Contact
 
 **Tugay Talha İçen**
-- GitHub: [@Tugaytalha](https://github.com/TugayTalha)
+- GitHub: [@Tugaytalha](https://github.com/Tugaytalha)
 - Twitter: [@TugayTalhaIcen](https://twitter.com/TugayTalhaIcen)
 - LinkedIn: [Tugay Talha İçen](https://linkedin.com/in/tugaytalhaicen)
 
-**Proje Linki**: [https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI](https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI)
+**Project Link**: [https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI](https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI)
 
-## 🙏 Teşekkürler
+## 🙏 Acknowledgments
 
-- **NREL (National Renewable Energy Laboratory)** TMY3 verilerini sağladığı için
-- **H2O.ai** ekibi otomatik ML altyapısı için
-- **Open-Meteo** ücretsiz API hizmeti için
-- **XGBoost** geliştiricileri güçlü gradient boosting algoritması için
+- To **NREL (National Renewable Energy Laboratory)** for providing TMY3 data
+- To **H2O.ai** team for the automated ML infrastructure
+- To **Open-Meteo** for the free API service
+- To **XGBoost** developers for the powerful gradient boosting algorithm
 
 ---
 
-☀️ **Yenilenebilir enerji ile daha temiz bir gelecek!**
+☀️ **A cleaner future with renewable energy!**
 
-⭐ Bu projeyi yararlı bulduysanız yıldızlamayı unutmayın!
+⭐ Don't forget to star this project if you found it useful!
 
-🐛 Hata bildirimi veya önerileriniz için [Issues](https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI/issues) sekmesini kullanın.
+🐛 Use the [Issues](https://github.com/TugayTalha/Solar_Irradiation-Production_Forecasting_Access_AI/issues) tab for bug reports or suggestions.
